@@ -10,9 +10,7 @@
 <title>Autos</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+	rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -25,6 +23,7 @@
 					<th scope="col">Motor</th>
 					<th scope="col">Color</th>
 					<th scope="col">Velocidad</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,7 +34,8 @@
 						<td>${auto.modelo}</td>
 						<td>${auto.color}</td>
 						<td>${auto.velocidad}</td>
-						
+						<td><a class="btn btn-warning" href="/auto/editar/${auto.id}" role="button">Editar</a></td>
+						<td><a class="btn btn-danger" href="eliminar/${auto.id}" role="button">Eliminar</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -43,7 +43,6 @@
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+		></script>
 </body>
 </html>
