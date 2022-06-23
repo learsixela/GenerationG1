@@ -23,7 +23,7 @@
 			<form:input path="numero" type="number" class="form-control" />
 			<br>
 			<form:label path="fechaVencimiento" class="form-label">Fecha Vencimiento:</form:label>
-			<form:input path="fechaVencimiento" type="date" class="form-control"/>
+			<form:input path="fechaVencimiento" type="date" min="2018-01-01" max="2030-01-01" class="form-control"/>
 			<br>
 			<form:label path="clase" class="form-label">Clase:</form:label>
 			<form:input type="text" path="clase" class="form-control"/>

@@ -1,5 +1,7 @@
 package com.generation.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -36,8 +38,10 @@ public class LicenciaController {
 		
 		//enviar al jsp lista de Licencias
 		List<Licencia> listaLicencias = licenciaService.findAll();
+		model.addAttribute("listaLicencias", listaLicencias);
 		
-		
+		Date fechaActual= new Date();
+	
 		return "licencia.jsp";
 	}
 	
