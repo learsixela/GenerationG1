@@ -34,6 +34,10 @@ public class LicenciaController {
 		List<Usuario> listaUsuarios = usuarioService.findAll();
 		model.addAttribute("listaUsuarios", listaUsuarios);
 		
+		//enviar al jsp lista de Licencias
+		List<Licencia> listaLicencias = licenciaService.findAll();
+		
+		
 		return "licencia.jsp";
 	}
 	

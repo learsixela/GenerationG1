@@ -14,6 +14,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="licencias")
 public class Licencia {
@@ -22,6 +24,7 @@ public class Licencia {
 	private Long id;
 	
 	private Integer numero;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaVencimiento;
 	private String clase;
 	private String estado;

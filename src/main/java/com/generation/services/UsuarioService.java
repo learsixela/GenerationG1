@@ -24,9 +24,9 @@ public class UsuarioService {
 		usuarioRepository.save(usuario);
 	}
 
-	//obteniendo al lista de usuarios
+	
 	public List<Usuario> findAll() {
-		
+		//obtener y retornar la lista de usuarios
 		return usuarioRepository.findAll();
 	}
 

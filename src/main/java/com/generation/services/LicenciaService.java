@@ -1,5 +1,7 @@
 package com.generation.services;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,12 @@ public class LicenciaService {
 
 	public void save(@Valid Licencia licencia) {
 		// almacenar en base datos la licencia
-		
 		licenciaRepository.save(licencia);
+	}
+
+	public List<Licencia> findAll() {
+		// retorno de la lista de licencias
+		return licenciaRepository.findAll();
 	}
 
 }

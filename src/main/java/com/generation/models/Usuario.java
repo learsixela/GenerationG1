@@ -59,7 +59,7 @@ public class Usuario {
 	}
 	public Usuario(String nombre, String apellido, Integer edad,String password) {
 		super();
-		this.nombre = nombre;
+		this.nombre = "serwlfjelwfhjlehjf";
 		this.apellido = apellido;
 		this.edad = edad;
 		this.password= password;
