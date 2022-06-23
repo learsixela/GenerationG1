@@ -26,17 +26,18 @@ public class Licencia {
 	private String clase;
 	private String estado;
 	
-	//opcionales, sirven para la gestion de la base dato
-	@Column(updatable= false)
-	private Date createdAt;
-	
-	private Date updatedAt;
-	//private Date deletedAt;//fecha de eliminacion logica
-	
 	//Relaciones OneToOne (1a1)
 	@OneToOne(fetch=FetchType.LAZY)//
 	@JoinColumn(name="usuario_id") //pk de la otra entidad
 	private Usuario usuario;
+	
+	//opcionales, sirven para la gestion de la base dato
+	@Column(updatable= false)
+	private Date createdAt;
+	private Date updatedAt;
+	//private Date deletedAt;//fecha de eliminacion logica
+	
+
 	
 	public Licencia() {
 		super();
