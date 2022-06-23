@@ -34,6 +34,10 @@
 			<!-- USUARIO -->
 			<form:select path="usuario" class="form-select">
 				<form:option value="0">Seleccione un usuario</form:option>
+				<c:forEach  var="usuario" items="${listaUsuarios}">
+					<form:option value="${usuario.id}">${usuario.nombre} ${usuario.apellido} </form:option>
+				</c:forEach>
+				
 			</form:select>
 	
 			<br>
