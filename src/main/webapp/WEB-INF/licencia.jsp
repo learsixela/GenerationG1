@@ -33,7 +33,7 @@
 			<br>
 			<!-- USUARIO -->
 			<form:select path="usuario" class="form-select">
-				<form:option value=""></form:option>
+				<form:option value="0">Seleccione un usuario</form:option>
 			</form:select>
 	
 			<br>

@@ -26,6 +26,13 @@ public class Licencia {
 	private String clase;
 	private String estado;
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	//Relaciones OneToOne (1a1)
 	@OneToOne(fetch=FetchType.LAZY)//
 	@JoinColumn(name="usuario_id") //pk de la otra entidad

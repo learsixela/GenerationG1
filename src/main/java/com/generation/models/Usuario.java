@@ -47,6 +47,12 @@ public class Usuario {
 	
 	
 	
+	public Licencia getLicencia() {
+		return licencia;
+	}
+	public void setLicencia(Licencia licencia) {
+		this.licencia = licencia;
+	}
 	//constructores
 	public Usuario() {
 		super();
