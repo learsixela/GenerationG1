@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -30,6 +33,10 @@ public class Licencia {
 	private Date updatedAt;
 	//private Date deletedAt;//fecha de eliminacion logica
 	
+	//Relaciones OneToOne (1a1)
+	@OneToOne(fetch=FetchType.LAZY)//
+	@JoinColumn(name="usuario_id") //pk de la otra entidad
+	private Usuario usuario;
 	
 	public Licencia() {
 		super();
