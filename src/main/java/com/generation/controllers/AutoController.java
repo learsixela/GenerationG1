@@ -86,12 +86,19 @@ public class AutoController {
 			
 			//enviamos el obeto a persistir en base datos
 			autoService.guardarAuto(auto);
-			//obtener una lista de autos
-			List<Auto> listaAutos = autoService.findAll();
-			//pasamos la lista de autos al jsp
-			model.addAttribute("autosCapturados", listaAutos);
-			return "mostrarAutos.jsp";
+			
+			return "redirect:/auto/mostrar";
 		}
 	}
+	
+	@RequestMapping("/eliminar/{id}")
+	public String eliminarAuto(@PathVariable("id") Long id) {
+		
+		autoService.eliminarPorId(id);
+		
+		return "redirect:/auto/mostrar";
+		
+	}
+	
 
 }

@@ -20,13 +20,18 @@ public class AutoService {
 		autoRepository.save(auto);
 		
 	}
-	//obtener una lista de autos
+	/**obtener una lista de autos*/
 	public List<Auto> findAll() {
-		
 		return autoRepository.findAll();
 	}
+	
 	public Auto buscarId(Long id) {
 		return autoRepository.findById(id).get();//.get() especifica el tipo de datos que necesitamos
+	}
+	
+	public void eliminarPorId(Long id) {
+		
+		autoRepository.deleteById(id);
 	}
 
 }

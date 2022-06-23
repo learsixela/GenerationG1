@@ -1,9 +1,14 @@
 package com.generation.models;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +21,11 @@ public class Auto {
 	private String modelo;
 	private Float velocidad;
 	private String color;
+	
+	@Column(updatable= false)
+	private Date createdAt;
+	private Date updatedAt;
+	
 	public Auto() {
 		super();
 	}
@@ -58,6 +68,13 @@ public class Auto {
 		this.color = color;
 	}
 	
-	
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 
 }

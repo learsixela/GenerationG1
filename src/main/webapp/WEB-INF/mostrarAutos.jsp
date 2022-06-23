@@ -19,6 +19,7 @@
 			<thead>
 				<tr>
 					<th scope="col">#</th>
+					<th scope="col">ID</th>
 					<th scope="col">Marca</th>
 					<th scope="col">Motor</th>
 					<th scope="col">Color</th>
@@ -29,6 +30,7 @@
 			<tbody>
 				<c:forEach var="auto" items="${autosCapturados}" >
 					<tr>
+						<th>id</th>
 						<th scope="row">${auto.id}</th>
 						<td>${auto.marca}</td>
 						<td>${auto.modelo}</td>
