@@ -2,9 +2,13 @@ package com.generation.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.generation.models.Licencia;
@@ -31,5 +35,15 @@ public class LicenciaController {
 		model.addAttribute("listaUsuarios", listaUsuarios);
 		
 		return "licencia.jsp";
+	}
+	
+	@PostMapping("/guardar")
+	public String guardarLicencia(@Valid @ModelAttribute("licencia") Licencia licencia
+			) {
+		
+		licenciaService.save(licencia);
+		
+		return "redirect:/licencia";
+		
 	}
 }

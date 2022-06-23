@@ -27,7 +27,7 @@ public class UsuarioService {
 	//obteniendo al lista de usuarios
 	public List<Usuario> findAll() {
 		
-		return null;
+		return usuarioRepository.findAll();
 	}
 
 
