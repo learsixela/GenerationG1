@@ -47,8 +47,6 @@ public class Licencia {
 	private Date updatedAt;
 	//private Date deletedAt;//fecha de eliminacion logica
 	
-
-	
 	public Licencia() {
 		super();
 	}
