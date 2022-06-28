@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 //tabla relacional 
 @Entity
-@Table(name="AutosVentas")
+@Table(name="autos_ventas")
 public class AutoVenta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
