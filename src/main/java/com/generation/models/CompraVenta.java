@@ -1,6 +1,7 @@
 package com.generation.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -36,6 +39,14 @@ public class CompraVenta {
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
+	//ManyToMany AutosVentas
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(
+			name="autos_ventas",//nombre tabla relacional
+			joinColumns = @JoinColumn(name="compra_venta_id"),//desde la entidad actual
+			inverseJoinColumns= @JoinColumn(name="auto_id")//la otra entidad o tabla
+			)
+	private List<Auto> autos;
 	
 	@Column(updatable= false)
 	private Date createdAt;
@@ -82,6 +93,14 @@ public class CompraVenta {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public List<Auto> getAutos() {
+		return autos;
+	}
+
+	public void setAutos(List<Auto> autos) {
+		this.autos = autos;
 	}
 	
     @PrePersist

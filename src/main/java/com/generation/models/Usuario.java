@@ -1,6 +1,7 @@
 package com.generation.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -45,7 +49,14 @@ public class Usuario {
 	@OneToOne(mappedBy ="usuario",cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	private Licencia licencia;
 	
-	
+	//ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(
+			name="roles_usuarios",//nombre tabla relacional
+			joinColumns = @JoinColumn(name="usuario_id"),//desde la entidad actual
+			inverseJoinColumns= @JoinColumn(name="rol_id")//la otra entidad o tabla
+			)
+	private List<Rol> roles;
 	
 	public Licencia getLicencia() {
 		return licencia;
@@ -85,6 +96,12 @@ public class Usuario {
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+	public List<Rol> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
 	}
 	public void setEdad(Integer edad) {
 		this.edad = edad;
