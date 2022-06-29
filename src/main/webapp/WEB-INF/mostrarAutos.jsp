@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 		<!-- formulario de busqueda-->
-		<form action="" method="post">
+		<form action="/auto/buscar" method="post">
 			<label for="marca">Marca:</label>
 			<input type="text" id="marca" name="marca">
 			
