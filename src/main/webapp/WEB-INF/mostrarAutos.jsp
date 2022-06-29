@@ -14,14 +14,22 @@
 </head>
 <body>
 	<div class="container">
-	
+		<!-- formulario de busqueda-->
+		<form action="" method="post">
+			<label for="marca">Marca:</label>
+			<input type="text" id="marca" name="marca">
+			
+			<input type="submit" class="btn btn-primary">
+		</form>
+		<br>
+		<!-- Tabla -->
 		<table class="table">
 			<thead>
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">ID</th>
 					<th scope="col">Marca</th>
-					<th scope="col">Motor</th>
+					<th scope="col">Modelo</th>
 					<th scope="col">Color</th>
 					<th scope="col">Velocidad</th>
 					<th scope="col">Acciones</th>

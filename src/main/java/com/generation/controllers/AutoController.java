@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.generation.models.Auto;
 import com.generation.services.AutoService;
@@ -100,5 +101,12 @@ public class AutoController {
 		
 	}
 	
+	@PostMapping("/buscar")
+	public String buscar(@RequestParam(value="marca") String marca, Model model ) {
+		
+		List<Auto> listaAutos = autoService.buscarMarca(marca);
+		model.addAttribute("autosCapturados", listaAutos);
+		return "mostrarAutos.jsp";
+	}
 
 }

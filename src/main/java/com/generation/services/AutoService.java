@@ -33,5 +33,9 @@ public class AutoService {
 		
 		autoRepository.deleteById(id);
 	}
+	public List<Auto> buscarMarca(String marca) {
+		//llamado a un metodo propio
+		return autoRepository.buscarMarca(marca);
+	}
 
 }
