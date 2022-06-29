@@ -31,8 +31,6 @@
 			<form:label path="color" class="form-label">Color:</form:label>
 			<form:input path="color" class="form-control"/>
 			<br>
-			<input type="submit" value="Guardar Auto">
-			<button type="submit" class="btn btn-primary">Guardar Auto</button>
 			<button type="submit" class="btn btn-outline-primary">Guardar Auto</button>
 		</form:form>
 	</div>

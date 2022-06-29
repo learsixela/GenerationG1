@@ -12,10 +12,17 @@ import com.generation.models.Auto;
 public interface AutoRepository extends JpaRepository<Auto, Long>{
 	//JPQL
 	//Usamos objeto
-	
+	@Query("SELECT a FROM Auto a WHERE a.marca = ?1")
+	List<Auto> findAllAutoMarca(String marca);
+	//List<Auto> getAutoWhereMarca(String marca);
 	
 	//Query comun
 	@Query(value="SELECT * FROM autos a WHERE a.marca = ?1",nativeQuery = true)
 	List<Auto> buscarMarca(String marca);
+	
+	//filtro por alguan columnas de la tabla
+	@Query(value="SELECT a.marca, a.color FROM autos a WHERE a.marca = ?1 and a.color=?2",nativeQuery = true)
+	List<Object[]> buscarMarcaColor(String marca, String color);
 
+	
 }

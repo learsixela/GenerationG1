@@ -35,7 +35,8 @@ public class AutoService {
 	}
 	public List<Auto> buscarMarca(String marca) {
 		//llamado a un metodo propio
-		return autoRepository.buscarMarca(marca);
+		//return autoRepository.buscarMarca(marca); //Query Tradicional
+		return autoRepository.findAllAutoMarca(marca);//Query por objeto
 	}
 
 }
