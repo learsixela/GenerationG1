@@ -125,7 +125,7 @@ public class AutoController {
 		//TotalPages= total_elementos / LOTE;
 		model.addAttribute("totalPaginas", listaAutos.getTotalPages());
 		
-		return "mostrarAutos.jsp";
+		return "autosPaginados.jsp";
 	}
 
 }

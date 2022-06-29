@@ -49,7 +49,7 @@ public class AutoService {
 	private static final int LOTE = 5;
 	//deprecado = new PageRequest(...)
 	public Page<Auto> paginarAutos(int numeroPagina){
-		PageRequest pageRequest = PageRequest.of(numeroPagina, LOTE,Sort.Direction.ASC,"marca");
+		PageRequest pageRequest = PageRequest.of(numeroPagina, LOTE,Sort.Direction.DESC,"velocidad");
 		//Page<Auto> autos = autoRepository.findAll(pageRequest);
 		return autoRepository.findAll(pageRequest);
 	}
