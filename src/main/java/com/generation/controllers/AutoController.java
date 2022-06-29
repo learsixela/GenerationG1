@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -111,6 +112,19 @@ public class AutoController {
 			model.addAttribute("msgAuto", "Auto no encontrado");
 		}
 		model.addAttribute("autosCapturados", listaAutos);
+		return "mostrarAutos.jsp";
+	}
+	
+	@RequestMapping("/pagina/{numeroPagina}")
+	public String paginarAutos(@PathVariable("numeroPagina") int numeroPagina, Model model) {
+		
+		//los iterables siempre empiezan con el indice cero (0)
+		Page<Auto> listaAutos = autoService.paginarAutos(numeroPagina - 1);
+		
+		model.addAttribute("autosCapturados", listaAutos);
+		//TotalPages= total_elementos / LOTE;
+		model.addAttribute("totalPaginas", listaAutos.getTotalPages());
+		
 		return "mostrarAutos.jsp";
 	}
 

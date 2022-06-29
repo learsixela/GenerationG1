@@ -47,10 +47,10 @@ public class AutoService {
 	//PAGINACION
 	//variable estatica, cantidad de datos a mostrar por pagina 
 	private static final int LOTE = 5;
-	
+	//deprecado = new PageRequest(...)
 	public Page<Auto> paginarAutos(int numeroPagina){
-		PageRequest pageRequest = new PageRequest(numeroPagina, LOTE,Sort.unsorted());
-		Page<Auto> autos = autoRepository.findAll(pageRequest);
+		PageRequest pageRequest = PageRequest.of(numeroPagina, LOTE,Sort.Direction.ASC,"marca");
+		//Page<Auto> autos = autoRepository.findAll(pageRequest);
 		return autoRepository.findAll(pageRequest);
 	}
 	
