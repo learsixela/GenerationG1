@@ -103,8 +103,13 @@ public class AutoController {
 	
 	@PostMapping("/buscar")
 	public String buscar(@RequestParam(value="marca") String marca, Model model ) {
-		
+		if(marca.equals("")) {
+			return "redirect:/auto/mostrar";
+		}
 		List<Auto> listaAutos = autoService.buscarMarca(marca);
+		if(listaAutos.size() < 1) {
+			model.addAttribute("msgAuto", "Auto no encontrado");
+		}
 		model.addAttribute("autosCapturados", listaAutos);
 		return "mostrarAutos.jsp";
 	}

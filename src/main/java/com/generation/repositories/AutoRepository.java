@@ -20,9 +20,11 @@ public interface AutoRepository extends JpaRepository<Auto, Long>{
 	@Query(value="SELECT * FROM autos a WHERE a.marca = ?1",nativeQuery = true)
 	List<Auto> buscarMarca(String marca);
 	
-	//filtro por alguan columnas de la tabla
+	//filtro por algunas columnas de la tabla
 	@Query(value="SELECT a.marca, a.color FROM autos a WHERE a.marca = ?1 and a.color=?2",nativeQuery = true)
 	List<Object[]> buscarMarcaColor(String marca, String color);
 
-	
+	//INNER JOIN
+	@Query("SELECT a FROM Auto a JOIN a.comprasVentas cv")
+	List<Auto> buscarAutosVendidos();
 }
