@@ -11,12 +11,14 @@ public class HomeController {
 	@RequestMapping("/home")
 	public String home(HttpSession session) {
 		
-		String email = session.getAttribute("email").toString();
-		if(email != null || ! email.isEmpty()) {
+		String email = (String) session.getAttribute("email");
+		if(email == null || email.equals("")) {
+			return "redirect:/registro/usuario/login";
+		}else {
 			return "home.jsp";
 		}
 		
-		return "redirect:/registro/usuario/login";
+		
 	}
 
 }
