@@ -57,16 +57,47 @@ public class RegistroController {//localhost:8080/registro
 			return "registro.jsp";
 		}else {
 		
-		//capturamos el objeto con los atributos llenos
-		System.out.println(usuario.getNombre()+" "+usuario.getApellido()+ " "+ usuario.getEdad());
+			//capturamos el objeto con los atributos llenos
+			System.out.println(usuario.getNombre()+" "+usuario.getApellido()+ " "+ usuario.getEdad());
+			
+			String variable= "";
+			//enviar el objeto al service
+			boolean usuarioCreado= usuarioService.saveUsuario(usuario);
+			
+			if(usuarioCreado) {
+				model.addAttribute("msgError", "El email ya esta registrado");
+				return "registro.jsp";
+			}else {
+				return "login.jsp";
+			}
 		
-		String variable= "";
-		//enviar el objeto al service
-		usuarioService.saveUsuario(usuario);
-		
-		
-		return "index.jsp"; //la pagina a deplegar
 		}
+	}
+	
+	@PostMapping("/usuario/ingreso")
+	public String ingresoUsuario(@RequestParam(value="email") String email,
+			@RequestParam(value="password") String password,
+			Model model) {
+		/**validaciones a realizar*/
+		//validar que los parametros no son null o vacios
+		if(email==null || password ==null ||  email.isEmpty() || password.isEmpty()) {
+			model.addAttribute("msgError", "Todos los campos son obligatorios");
+			return "registro.jsp";
+		}
+		//si es true, indica que hay un error el bd
+		boolean usuarioValidado = usuarioService.validarUsuario(email,password);
+		
+		if(usuarioValidado){
+			model.addAttribute("msgError", "Error en el ingreso al sistema");
+			return "registro.jsp";
+		}else {
+			//no hay error, puede ingresar al sistema
+			return "home.jsp";
+		}
+		
+		
+		
+	
 	}
 	
 
