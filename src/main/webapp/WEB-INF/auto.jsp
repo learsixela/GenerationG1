@@ -33,6 +33,8 @@
 			<br>
 			<button type="submit" class="btn btn-outline-primary">Guardar Auto</button>
 		</form:form>
+		
+		<a href="/auto/mostrar" class="btn btn-primary">Mostrar lista de Autos</a>
 	</div>
 </body>
 </html>

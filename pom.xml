@@ -68,12 +68,12 @@
 			<groupId>antlr</groupId>
 			<artifactId>antlr</artifactId>
 		</dependency>
-		<!--<dependency>
+		<dependency><!-- encriptar el password -->
 			<groupId>org.mindrot</groupId>
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency> -->

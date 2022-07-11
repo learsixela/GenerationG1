@@ -24,8 +24,14 @@
 			<form:label path="edad">Edad:</form:label>
 			<form:input type="number" path="edad"/>
 			<br>
+			<form:label path="email">Email:</form:label>
+			<form:input type="email" path="email"/>
+			<br>
 			<form:label path="password">Password:</form:label>
 			<form:input type="password" path="password"/>
+			<br>
+			<form:label path="passwordConfirmacion">Confirmar Password:</form:label>
+			<form:input type="password" path="passwordConfirmacion"/>
 			<br>
 			
 			

@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -36,9 +37,14 @@ public class Usuario {
 	
 	private Integer edad;
 	
+	private String email;
+	
 	@NotNull
 	@Size(min=6, max= 8)
 	private String password;
+	
+	@Transient //no se crea en la tabla de base datos
+	private String passwordConfirmacion;
 	
 	@Column(updatable= false)
 	private Date createdAt;
@@ -106,6 +112,12 @@ public class Usuario {
 	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -113,7 +125,14 @@ public class Usuario {
 		this.password = password;
 	}
 	
-    @PrePersist
+    public String getPasswordConfirmacion() {
+		return passwordConfirmacion;
+	}
+	public void setPasswordConfirmacion(String passwordConfirmacion) {
+		this.passwordConfirmacion = passwordConfirmacion;
+	}
+	
+	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
     }
