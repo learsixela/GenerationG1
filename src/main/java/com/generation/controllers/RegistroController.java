@@ -1,5 +1,6 @@
 package com.generation.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +78,7 @@ public class RegistroController {//localhost:8080/registro
 	@RequestMapping("/usuario/ingreso")
 	public String ingresoUsuario(@RequestParam(value="email") String email,
 			@RequestParam(value="password") String password,
-			Model model) {
+			Model model, HttpSession session) {
 		/**validaciones a realizar*/
 		//validar que los parametros no son null o vacios
 		if(email==null || password ==null ||  email.isEmpty() || password.isEmpty()) {
@@ -92,7 +93,9 @@ public class RegistroController {//localhost:8080/registro
 			return "login.jsp";
 		}else {
 			//no hay error, puede ingresar al sistema
-			return "home.jsp";
+			session.setAttribute("email", email);
+			
+			return "redirect:/home";
 		}
 	}
 	
