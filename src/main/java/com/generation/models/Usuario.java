@@ -40,7 +40,6 @@ public class Usuario {
 	private String email;
 	
 	@NotNull
-	@Size(min=6, max= 8)
 	private String password;
 	
 	@Transient //no se crea en la tabla de base datos

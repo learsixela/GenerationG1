@@ -74,7 +74,7 @@ public class RegistroController {//localhost:8080/registro
 		}
 	}
 	
-	@PostMapping("/usuario/ingreso")
+	@RequestMapping("/usuario/ingreso")
 	public String ingresoUsuario(@RequestParam(value="email") String email,
 			@RequestParam(value="password") String password,
 			Model model) {
@@ -82,23 +82,23 @@ public class RegistroController {//localhost:8080/registro
 		//validar que los parametros no son null o vacios
 		if(email==null || password ==null ||  email.isEmpty() || password.isEmpty()) {
 			model.addAttribute("msgError", "Todos los campos son obligatorios");
-			return "registro.jsp";
+			return "login.jsp";
 		}
 		//si es true, indica que hay un error el bd
 		boolean usuarioValidado = usuarioService.validarUsuario(email,password);
 		
 		if(usuarioValidado){
 			model.addAttribute("msgError", "Error en el ingreso al sistema");
-			return "registro.jsp";
+			return "login.jsp";
 		}else {
 			//no hay error, puede ingresar al sistema
 			return "home.jsp";
 		}
-		
-		
-		
-	
 	}
 	
-
+	@RequestMapping("/usuario/login")
+	public String login() {
+		return "login.jsp";
+	}
+	
 }
