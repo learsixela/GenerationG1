@@ -15,6 +15,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="clientes")
 public class Cliente {
@@ -27,7 +30,9 @@ public class Cliente {
 	private String email;
 	
 	//OneToMany
-	@OneToMany(mappedBy ="cliente",cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy ="cliente",cascade=CascadeType.ALL ,fetch=FetchType.EAGER)
 	private List<CompraVenta> comprasVentas;
 	
 	
@@ -38,6 +43,7 @@ public class Cliente {
 	public Cliente() {
 		super();
 	}
+	
 	public Cliente(String nombre, String apellido, String email) {
 		super();
 		this.nombre = nombre;

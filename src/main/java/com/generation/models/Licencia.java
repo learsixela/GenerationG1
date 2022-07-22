@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="licencias")
 public class Licencia {
@@ -37,7 +39,8 @@ public class Licencia {
 		this.usuario = usuario;
 	}
 	//Relaciones OneToOne (1a1)
-	@OneToOne(fetch=FetchType.LAZY)//
+	@JsonManagedReference
+	@OneToOne(fetch=FetchType.EAGER)//
 	@JoinColumn(name="usuario_id") //pk de la otra entidad
 	private Usuario usuario;
 	

@@ -94,7 +94,6 @@ public class RegistroController {//localhost:8080/registro
 		}else {
 			//no hay error, puede ingresar al sistema
 			session.setAttribute("email", email);
-			
 			return "redirect:/home";
 		}
 	}
@@ -103,5 +102,5 @@ public class RegistroController {//localhost:8080/registro
 	public String login() {
 		return "login.jsp";
 	}
-	
+
 }

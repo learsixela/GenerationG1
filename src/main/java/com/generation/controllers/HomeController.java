@@ -17,8 +17,6 @@ public class HomeController {
 		}else {
 			return "home.jsp";
 		}
-		
-		
 	}
 
 }

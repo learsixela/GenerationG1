@@ -21,8 +21,13 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 @Entity
 @Table(name="usuarios")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Usuario {
 	//atributos
 	@Id
@@ -51,15 +56,17 @@ public class Usuario {
 	private Date updatedAt;
 	
 	//OneToOne
+	@JsonBackReference
 	@OneToOne(mappedBy ="usuario",cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	private Licencia licencia;
 	
 	//ManyToMany
-	@ManyToMany(fetch=FetchType.EAGER)
+	@JsonManagedReference
+	@ManyToMany(fetch=FetchType.EAGER)//join
 	@JoinTable(
-			name="roles_usuarios",//nombre tabla relacional
-			joinColumns = @JoinColumn(name="usuario_id"),//desde la entidad actual
-			inverseJoinColumns= @JoinColumn(name="rol_id")//la otra entidad o tabla
+			name="roles_usuarios",
+			joinColumns= @JoinColumn(name="usuario_id"),
+			inverseJoinColumns=@JoinColumn(name="rol_id")
 			)
 	private List<Rol> roles;
 	

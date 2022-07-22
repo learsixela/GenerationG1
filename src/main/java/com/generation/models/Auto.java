@@ -16,6 +16,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="autos")
 public class Auto {
@@ -29,6 +31,7 @@ public class Auto {
 	private Float valor;
 	
 	//ManyToMany AutosVentas
+	@JsonIgnore
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 			name="autos_ventas",//nombre tabla relacional

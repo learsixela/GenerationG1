@@ -20,6 +20,9 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="comprasVentas")//recordar revisar la tabla
 public class CompraVenta {
@@ -35,6 +38,7 @@ public class CompraVenta {
 	private Date fecha;
 	
 	//ManyToOne FK
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;

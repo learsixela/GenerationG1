@@ -14,60 +14,77 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="roles")
 public class Rol {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String nombre;
 	private String descripcion;
+	
+	@JsonBackReference
+	@ManyToMany(mappedBy ="roles",fetch=FetchType.LAZY)
+	private List<Usuario> usuarios;
 
-	//ManyToMany (2 oneToMany)
-	@ManyToMany(mappedBy = "roles",fetch=FetchType.LAZY)
-	private List<Usuario> listaUsuario;
-	
-	@Column(updatable= false)
-	private Date createdAt;
-	private Date updatedAt;
-	
+    @Column(updatable=false)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date createdAt;
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date updatedAt;
+    
 	public Rol() {
 		super();
 	}
-	public Rol(String nombre, String descripcion, List<Usuario> listaUsuario) {
+
+	public Rol(Long id, String nombre, String descripcion, List<Usuario> usuarios) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.listaUsuario = listaUsuario;
+		this.usuarios = usuarios;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
-	public List<Usuario> getListaUsuario() {
-		return listaUsuario;
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public void setListaUsuario(List<Usuario> listaUsuario) {
-		this.listaUsuario = listaUsuario;
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 	
-    @PrePersist
+	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
     }
@@ -75,6 +92,4 @@ public class Rol {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-	
-	
 }
